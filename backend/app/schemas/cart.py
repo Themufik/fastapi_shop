@@ -24,5 +24,5 @@ class CartItem(BaseModel):
     price : float = Field(..., description="Product price")
     quanity : int = Field(..., "Product quanity") 
     subtotal : float = Field(..., description="Total price for this item (price * quanity) ")
-    image_irt : Optional[str] = Field(None, description="Product image URL")
+    image_irl : Optional[str] = Field(None, description="Product image URL")
     
