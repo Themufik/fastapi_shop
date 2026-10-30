@@ -9,7 +9,7 @@ class CategoryRepository:
         self.db = db
     
     def get_all(self) -> List[Category]:
-        return self.db.query(Category.all())
+        return self.db.query(Category).all()
     
     def get_by_id(self, category_id: int) -> Optional[Category]:
         return self.db.query(Category).filter(Category.id == category_id).first()

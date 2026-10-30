@@ -26,6 +26,19 @@ app.add_middleware(
 
 app.mount('/static', StaticFiles(directory="static"), name="static")
 
+
+
+app.include_router(product_router)
+app.include_router(categories_router)
+app.include_router(cart_router)
+
+
+@app.on_event('startup')
+def on_startup():
+    init_db()
+    
+    
+
 @app.get('/')
 def root():
     return {
@@ -33,3 +46,6 @@ def root():
         "docs" : "api/docs",
     }
   
+@app.get('/health')
+def healsth_check():
+    return {"status" : "health"}

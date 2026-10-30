@@ -16,7 +16,7 @@ class Category_Service():
         category = self.repository.get_by_id(category_id)
         if not category:
             raise HTTPException( status_code= status.HTTP_404_NOT_FOUND,
-                                detail= f'["Category with id {category.id} not found]')
+                                detail= f'["Category with id {category_id} not found]')
         
         
         return CategoryResponse.model_validate(category)
