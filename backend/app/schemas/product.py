@@ -5,9 +5,9 @@ from .category import CategoryResponse
 
 
 class ProductBase(BaseModel):
-    name : str = Field(..., min_length=5, max_length=200, descriptions = "Product name")
+    name : str = Field(..., min_length=5, max_length=200, description = "Product name")
     description : Optional[str] = Field(None, description = "Product Description")
-    peice : float = Field(..., gt=0, description='Product price must be greater than 0')
+    price : float = Field(..., gt=0, description='Product price must be greater than 0')
     
     category_id : int = Field(..., description="Category ID")
     
@@ -21,8 +21,8 @@ class ProductCreate(ProductBase):
 class ProductResponse(BaseModel):
     id : int = Field(..., description='Uniaue product ID')
     name : str 
-    description = Optional[str]
-    price = float
+    description : Optional[str]
+    price : float
     
     category_id: int
     
@@ -38,9 +38,4 @@ class ProductListResponse(BaseModel):
     total : int = Field(..., description="Total number of products")
     
     
-    
-class CartResponse(BaseModel):
-    items : list = Field(..., description= "List of items in cart")
-    total : float = Field(..., description="Total cart price")
-    items_count : float = Field(..., description= " Total number of items in cart")
     

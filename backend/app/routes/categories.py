@@ -2,13 +2,13 @@ from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
 from typing import List
 from ..database import get_db
-from ..schemas.category_service import CategoryService
+from ..services.category_service import Category_Service
 from ..schemas.category import CategoryResponse
 
 
 
 router = APIRouter(
-    prefix= "domen.com/api/categories/",
+    prefix= "/api/categories",
     tags = ['categories']
 
     

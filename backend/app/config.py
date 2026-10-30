@@ -2,9 +2,9 @@ from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
     app_name : str = "FastAPI_Shop"
-    debug : True 
+    debug : bool = True 
     database_url : str = 'sqlite:///./shop.db'
-    cors_orogins : list = [
+    cors_origins : list = [
         "https: //localhost:5173",
         "https: //localhost:3000",
         "https: //127.0.1:5173",

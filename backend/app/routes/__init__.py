@@ -1,4 +1,4 @@
-from .products import router as product_router
+from .product import router as product_router
 from .categories import router as categories_router
 from .cart import router as cart_router
 

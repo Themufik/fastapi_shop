@@ -1,28 +1,28 @@
 from pydantic import BaseModel, Field
-from datetime import datetime 
-from typing import Optional
+from typing import Optional, List
 
 
 class CartItemBase(BaseModel):
-    product_id : str = Field(..., description="Product Id")
-    quantity : str = Field(..., gt=0, description= "Quantity (must be greater than 0)")
-    
+    product_id : int = Field(..., description="Product Id") 
+    quantity : int = Field(..., gt=0, description= "Quantity (must be greater than 0)") 
     
 class CartItemCreate(CartItemBase):
     pass
 
 
-class CatrItemUpdate(BaseModel):
+class CartItemUpdate(BaseModel):
     product_id : int = Field(..., description="Product ID")
-    quanity : int = Field(..., gt=0, description="New quanity (must greater than 0)")
-    
-    
+    quantity : int = Field(..., gt=0, description="New quantity (must greater than 0)") 
     
 class CartItem(BaseModel):
     product_id : int
-    name : str = Field(...,)
+    name : str = Field(...)
     price : float = Field(..., description="Product price")
-    quanity : int = Field(..., "Product quanity") 
-    subtotal : float = Field(..., description="Total price for this item (price * quanity) ")
-    image_irl : Optional[str] = Field(None, description="Product image URL")
+    quantity : int = Field(..., description = "Product quantity") 
+    subtotal : float = Field(..., description="Total price for this item") 
+    image_url : Optional[str] = Field(None, description="Product image URL") 
     
+class CartResponse(BaseModel):
+    items : List[CartItem] = Field(..., description= "List of items in cart")
+    total : float = Field(..., description="Total cart price")
+    items_count : int = Field(..., description= "Total number of items in cart") 
